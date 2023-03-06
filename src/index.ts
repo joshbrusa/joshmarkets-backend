@@ -4,11 +4,8 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
-const port = 80;
-
 app.use(cors());
-
-app.listen(port);
+app.listen(process.env.PORT || 80);
 
 app.get("/", (req, res) => {
   res.json({ message: "hello from api" });
