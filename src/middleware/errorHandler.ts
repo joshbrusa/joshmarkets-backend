@@ -1,4 +1,16 @@
-export default function errorHandler(error, req, res, next) {
+import type { Request, Response, NextFunction } from "express";
+
+interface Error {
+  status?: number;
+  message?: String;
+}
+
+export default function errorHandler(
+  error: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   console.log(error.message);
   const status = error.status || 500;
   res.status(status).json({ message: error.message });
