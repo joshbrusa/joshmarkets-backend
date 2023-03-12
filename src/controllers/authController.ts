@@ -58,9 +58,15 @@ export async function signIn(req: Request, res: Response, next: NextFunction) {
     }
 
     if (process.env.JWT_SECRET) {
-      res.cookie("jwt", sign({ sub: user.id }, process.env.JWT_SECRET), {
-        httpOnly: true,
-      });
+      res.cookie(
+        "jwt",
+        sign({ sub: user.id }, process.env.JWT_SECRET, {
+          expiresIn: 60 * 60 * 24,
+        }),
+        {
+          httpOnly: true,
+        }
+      );
     }
 
     res.end();

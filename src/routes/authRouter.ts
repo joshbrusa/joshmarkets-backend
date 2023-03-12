@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 import {
   signUp,
   signIn,
@@ -7,12 +7,12 @@ import {
   forgotPasswordJwt,
 } from "../controllers/authController";
 
-const router = express.Router();
+const router = Router();
 
 router.post("/signUp", signUp);
 router.post("/signIn", signIn);
 router.post("/signOut", signOut);
 router.post("/forgotPassword", forgotPassword);
-router.post("/forgotPassword/:jwt", forgotPasswordJwt);
+router.put("/forgotPassword/:jwt", forgotPasswordJwt);
 
 export default router;
