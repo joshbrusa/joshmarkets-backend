@@ -16,4 +16,4 @@ app.use("/auth", authRouter);
 // error middleware, keep at end
 app.use(errorHandler);
 
-app.listen(process.env.PORT || 80);
+app.listen(process.env.PORT);
