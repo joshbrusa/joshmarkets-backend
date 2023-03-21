@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  check,
   signUp,
   signIn,
   signOut,
@@ -9,6 +10,7 @@ import {
 
 const router = Router();
 
+router.get("/check", check);
 router.post("/signUp", signUp);
 router.post("/signIn", signIn);
 router.post("/signOut", signOut);

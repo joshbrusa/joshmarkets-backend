@@ -4,6 +4,21 @@ import { prisma } from "../config/prismaClient";
 import { transport } from "../config/nodemailerTransport";
 import type { Request, Response, NextFunction } from "express";
 
+export async function check(req: Request, res: Response, next: NextFunction) {
+  try {
+    try {
+      if (process.env.JWT_SECRET) {
+        verify(req.cookies.jwt, process.env.JWT_SECRET);
+        res.end();
+      }
+    } catch (error) {
+      res.status(401).json({ message: "unauthorized" });
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
 export async function signUp(req: Request, res: Response, next: NextFunction) {
   try {
     if (req.body.email.length === 0) {
