@@ -35,6 +35,13 @@ model Friend {
   status FriendStaus
 }
 
+model Ticker {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ticker String
+}
+
 model MarketDataFollow {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
