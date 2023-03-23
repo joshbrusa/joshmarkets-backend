@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/authRouter";
 import marketsRouter from "./routes/marketsRouter";
 import errorHandler from "./middleware/errorHandler";
-import tickerCron from "./cron/tickerCron";
+import companyCron from "./cron/companyCron";
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use("/markets", marketsRouter);
 app.use(errorHandler);
 
 // cron
-tickerCron();
+companyCron();
 
 app.listen(process.env.PORT, () => {
   console.log("server listening on port", process.env.PORT);
