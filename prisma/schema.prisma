@@ -1,10 +1,10 @@
-generator client {
-  provider = "prisma-client-js"
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js"
 }
 
 enum FriendStaus {
@@ -33,6 +33,12 @@ model Friend {
   to User @relation("ToFriend", fields: [toId], references: [id])
   toId Int
   status FriendStaus
+}
+
+model Ticker {
+  id String @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model MarketDataFollow {
