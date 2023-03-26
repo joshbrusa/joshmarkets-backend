@@ -2,7 +2,8 @@ import { schedule } from "node-cron";
 import { prisma } from "../config/prismaClient";
 
 export default function tickerCron() {
-  schedule("* * * * 0-7", async () => {
+  // runs every day at midnight, 0 second, 0 minute, 0 hour
+  schedule("0 0 0 * * *", async () => {
     try {
       const secRes = await fetch(
         "https://www.sec.gov/files/company_tickers.json"
