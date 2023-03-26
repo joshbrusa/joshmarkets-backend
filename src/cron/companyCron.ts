@@ -25,8 +25,10 @@ export default function tickerCron() {
             where: { cik: data[id].cik_str },
           });
         }
+
+        console.log("sec company cron success");
       } else {
-        console.log("sec company cron fetch failed");
+        console.log("sec company cron failure");
       }
     } catch (error) {
       console.log(error);
